@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#090909">
+  <title>Conexão Judaica — Painel</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <div id="loginView" class="login-wrap">
+    <form id="loginForm" class="login-card">
+      <div class="brand-mark">CJ</div>
+      <p class="eyebrow">PAINEL DE CONSULTAS</p>
+      <h1>Conexão <span>Judaica</span></h1>
+      <p class="muted">Acesse seu ambiente de consultas públicas.</p>
+      <label>Usuário<input name="username" autocomplete="username" required maxlength="50"></label>
+      <label>Senha<input name="password" type="password" autocomplete="current-password" required maxlength="200"></label>
+      <button class="primary full" type="submit">Entrar no painel</button>
+      <p id="loginError" class="error" aria-live="polite"></p>
+      <p class="tiny">Acesso restrito. Não compartilhe suas credenciais.</p>
+    </form>
+  </div>
+
+  <div id="appView" class="app hidden">
+    <aside class="sidebar">
+      <div class="brand"><div class="brand-mark small">CJ</div><div><b>CONEXÃO</b><span>JUDAICA</span></div></div>
+      <div class="nav-label">MENU PRINCIPAL</div>
+      <button class="nav-item active" data-page="dashboard"><i>▦</i> Visão geral</button>
+      <button class="nav-item" data-page="cep"><i>⌖</i> Consulta de CEP</button>
+      <button class="nav-item" data-page="cnpj"><i>▤</i> Consulta de CNPJ</button>
+      <button class="nav-item" data-page="history"><i>◷</i> Histórico</button>
+      <div class="sidebar-bottom"><div class="status-dot"></div> Serviços públicos <b>online*</b><button id="logoutBtn" class="logout">↪ Sair</button></div>
+    </aside>
+
+    <main class="main">
+      <header class="topbar"><div><span class="muted smalltext">ESPAÇO DE TRABALHO</span><h2 id="pageTitle">Visão geral</h2></div><div class="user-pill"><span class="avatar">U</span><span id="currentUser">Usuário</span></div></header>
+      <section id="dashboardPage" class="page">
+        <div class="welcome"><div><p class="eyebrow">PAINEL PRINCIPAL</p><h1>Bem-vindo de volta.</h1><p>Consulte informações públicas de forma simples e organizada.</p></div><div class="welcome-icon">⌕</div></div>
+        <div class="stats"><article class="stat"><span>FERRAMENTAS DISPONÍVEIS</span><strong>02</strong><small>CEP e CNPJ</small></article><article class="stat"><span>CONSULTAS RECENTES</span><strong id="totalSearches">—</strong><small>Últimas 30 registradas</small></article><article class="stat"><span>STATUS</span><strong class="online">Ativo</strong><small>Sessão autenticada</small></article></div>
+        <h3 class="section-title">Ferramentas de consulta</h3>
+        <div class="tool-grid">
+          <button class="tool-card" data-open="cep"><span class="tool-icon">⌖</span><span><b>Consulta de CEP</b><small>Localize dados postais de um CEP.</small></span><em>→</em></button>
+          <button class="tool-card" data-open="cnpj"><span class="tool-icon">▤</span><span><b>Consulta de CNPJ</b><small>Consulte dados cadastrais públicos de empresas.</small></span><em>→</em></button>
+        </div>
+        <p class="notice">*O status indica que o painel está funcionando. A disponibilidade das consultas depende dos serviços externos.</p>
+      </section>
+
+      <section id="cepPage" class="page hidden">
+        <div class="page-intro"><p class="eyebrow">FERRAMENTA / CEP</p><h1>Consulta de CEP</h1><p>Consulte informações postais disponibilizadas pelo ViaCEP.</p></div>
+        <form id="cepForm" class="search-panel"><label>CEP (8 números)<div class="input-row"><input id="cepInput" inputmode="numeric" placeholder="Ex.: 01001000" maxlength="9" required><button class="primary" type="submit">Consultar</button></div></label></form>
+        <div id="cepResult" class="result hidden" aria-live="polite"></div>
+      </section>
+
+      <section id="cnpjPage" class="page hidden">
+        <div class="page-intro"><p class="eyebrow">FERRAMENTA / EMPRESAS</p><h1>Consulta de CNPJ</h1><p>Consulte dados cadastrais públicos de uma empresa.</p></div>
+        <form id="cnpjForm" class="search-panel"><label>CNPJ (14 números)<div class="input-row"><input id="cnpjInput" inputmode="numeric" placeholder="Ex.: 00000000000191" maxlength="18" required><button class="primary" type="submit">Consultar</button></div></label></form>
+        <div id="cnpjResult" class="result hidden" aria-live="polite"></div>
+      </section>
+
+      <section id="historyPage" class="page hidden">
+        <div class="page-intro"><p class="eyebrow">ATIVIDADE</p><h1>Histórico de consultas</h1><p>Últimas consultas realizadas nesta conta.</p></div>
+        <div id="historyList" class="history-list"></div>
+      </section>
+      <footer>CONEXÃO JUDAICA <span>•</span> Consultas públicas e autorizadas</footer>
+    </main>
+  </div>
+  <script src="/app.js"></script>
+</body>
+</html>
